@@ -1,0 +1,83 @@
+@model Person
+@{
+    ViewData["Title"] = "Detail Person";
+    var index = (int)ViewBag.PersonIndex;
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<div class="text-center">
+    <h1 class="display-4">Member</h1>
+
+    <hr />
+
+</div>
+
+<div>
+    <div class="col-6 offset-3">
+        <h1>Detail Person</h1>
+
+        <div class="form-group">
+            <label asp-for="FirstName" class="control-labely"></label>
+            <label type="text" class="form-control">@Model.FirstName</label>
+
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName" class="control-labely"></label>
+            <label type="text" class="form-control">@Model.LastName</label>
+
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Gender" class="control-labely"></label>
+            <label type="text" class="form-control">@Model.Gender</label>
+
+        </div>
+
+        <div class="form-group">
+            <label asp-for="DOB" class="control-labely"></label>
+            <label type="date" class="form-control">@Model.DOB.ToString("dd/MM/yyyy")</label>
+
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BirthPlace" class="control-labely"></label>
+            <label type="text" class="form-control">@Model.BirthPlace</label>
+
+        </div>
+        <form asp-action="ResultDeletePage" asp-controller="Member" asp-route-index="@index" method="post">
+            <a type="submit" class="btn btn-secondary" asp-action="Index" asp-controller="Member">Back</a>
+            <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#ExampleModal">Delete</button>
+        </form>
+    </div>
+</div>
+<!--Modal-->
+<div class="modal" tabindex="-1" id="ExampleModal" role="dialog" aria-labelledby="exampleModallabel"aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModallabel">Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to delete this?</p>
+            </div>
+            <div class="modal-footer">
+                <form asp-action="ResultDeletePage" asp-controller="Member" asp-route-index="@index" method="post">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-primary" >Yes</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+  
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>

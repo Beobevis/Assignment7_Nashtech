@@ -1,0 +1,82 @@
+@model List<Person>
+
+@{
+  ViewData["Title"] = "Member List";
+  Layout = "_Layout";
+
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<div class="text-center">
+  <h1 class="display-4">Member List</h1>
+</div>
+<p>
+  <a class="btn btn-primary" asp-action="AddPerson" asp-controller="Member">Create New Member</a>
+</p>
+<div>
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Date Of Birth</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Age</th>
+        <th scope="col">BirthPlace</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (Model != null)
+        @for (var index = 1; index <= Model.Count; index++)
+        {
+          var item = Model[index - 1];
+          <tr>
+            <th scope="row">@index</th>
+            <td><a asp-action="Detail" asp-controller="Member" asp-route-index="@index">@item.FullName</a></td>
+            <td>@item.DOB.ToString("dd/MM/yyyy")</td>
+            <td>@item.Gender</td>
+            <td>@item.Age</td>
+            <td>@item.BirthPlace</td>
+            <td>
+              <a type="button" class="btn btn-success" asp-action="EditPerson" asp-controller="Member"
+            asp-route-index="@index">Edit</a>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ExampleModal"
+            >Delete</button>
+            </td>
+          </tr>
+          
+            <!--Modal-->
+            <div class="modal" tabindex="-1" id="ExampleModal" role="dialog" aria-labelledby="exampleModallabel"aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModallabel">Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Do you want to delete this?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <form asp-action="DeletePerson" asp-controller="Member" asp-route-index="@index" method="post">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-primary">Yes</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          
+
+        }
+    </tbody>
+  </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
