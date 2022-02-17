@@ -3,10 +3,10 @@ using Assignment7.Services;
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddHttpContextAccessor();
-//builder.Services.AddDistributedMemoryCache();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
 builder.Services.AddScoped<IPersonService, PersonService>();
 builder.Services.AddControllersWithViews();
-
 
 
 var app = builder.Build();

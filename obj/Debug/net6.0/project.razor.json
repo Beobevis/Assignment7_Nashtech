@@ -16303,6 +16303,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Pc Market\\Desktop\\Nashtech\\Assignment7\\Views\\Member\\Result.cshtml",
+      "TargetPath": "Views\\Member\\Result.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Pc Market\\Desktop\\Nashtech\\Assignment7\\Views\\Member\\AddPerson.cshtml",
       "TargetPath": "Views\\Member\\AddPerson.cshtml",
       "FileKind": "mvc"
@@ -16345,11 +16350,6 @@
     {
       "FilePath": "c:\\Users\\Pc Market\\Desktop\\Nashtech\\Assignment7\\Views\\Member\\EditPerson.cshtml",
       "TargetPath": "Views\\Member\\EditPerson.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\Pc Market\\Desktop\\Nashtech\\Assignment7\\Views\\Member\\ResultDeletePage.cshtml",
-      "TargetPath": "Views\\Member\\ResultDeletePage.cshtml",
       "FileKind": "mvc"
     },
     {

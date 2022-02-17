@@ -166,12 +166,12 @@ public class MemberController : Controller
     [HttpPost]
      public IActionResult DeleteWithResult(int index)
     {
-        var deletedUserName = string.Empty;
+        //var deletedUserName = string.Empty;
         try
         {
             var person = _personService.GetOne(index);
-            deletedUserName = person.FullName;
-            //HttpContext.Session.SetString("DELETED_USER_NAME",person.FullName);
+            //deletedUserName = person.FullName;
+            HttpContext.Session.SetString("DELETED_USER_NAME",person.FullName);
             _personService.Delete(index);
             
         }
@@ -179,9 +179,9 @@ public class MemberController : Controller
         {
             
         }
-        return View("ResultDeletePage",deletedUserName);
+        return RedirectToAction("Result");
     }  
-    public IActionResult ResultDeletePage(){
+    public IActionResult Result(){
         
         var deletedUserName = HttpContext.Session.GetString("DELETED_USER_NAME");
         ViewBag.DeletedUserName = deletedUserName;
